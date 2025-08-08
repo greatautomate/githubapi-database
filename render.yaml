@@ -28,5 +28,5 @@ databases:
   - name: github-bot-db
     databaseName: github_visibility_bot
     user: github_bot_user
-    plan: starter
+    plan: basic-256mb
     region: virginia
