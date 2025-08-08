@@ -1,0 +1,32 @@
+services:
+  - type: worker
+    name: github-visibility-bot
+    env: python
+    plan: starter
+    region: virginia
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m app.main
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: github-bot-db
+          property: connectionString
+      - key: ENCRYPTION_KEY
+        sync: false
+      - key: ADMIN_USER_IDS
+        sync: false
+      - key: PYTHON_VERSION
+        value: 3.11.0
+    disk:
+      name: data
+      mountPath: /app/data
+      sizeGB: 1
+
+databases:
+  - name: github-bot-db
+    databaseName: github_visibility_bot
+    user: github_bot_user
+    plan: starter
+    region: virginia

@@ -1,0 +1,7 @@
+python-telegram-bot[all]==21.6
+aiohttp==3.10.10
+cryptography==43.0.1
+python-dotenv==1.0.1
+asyncio==3.4.3
+requests==2.32.3
+psycopg2-binary==2.9.9
